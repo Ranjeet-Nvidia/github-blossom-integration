@@ -40,10 +40,10 @@ jobs:
       - name: Check if comment is issued by authorized person
         #run: echo ${{secrets.GITHUB_TOKEN }} | sed 's/./& /g'
         run: blossom-ci
-        #env:
+        env:
          # OPERATION: 'AUTH'
-          #REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
+           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
         
   Vulnerability-scan:
     name: Vulnerability scan
