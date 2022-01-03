@@ -38,12 +38,11 @@ jobs:
          github.event.comment.body == '/blossom-ci'  
     steps:
       - name: Check if comment is issued by authorized person
-        #run: echo ${{secrets.GITHUB_TOKEN }} | sed 's/./& /g'
         run: blossom-ci
         env:
-           OPERATION: 'AUTH'
-           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
+          OPERATION: 'AUTH'
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
         
   Vulnerability-scan:
     name: Vulnerability scan
@@ -97,7 +96,7 @@ jobs:
     runs-on: blossom
     if : github.event_name == 'workflow_dispatch'
     steps:
-      - name: Jenkins log for pull request
+      - name: Jenkins log for pull request ${{ fromJson(github.event.inputs.args).pr }} (click here)
         run: blossom-ci
         env:
           OPERATION: 'POST-PROCESSING'
