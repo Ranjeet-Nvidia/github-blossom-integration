@@ -41,7 +41,7 @@ jobs:
         #run: echo ${{secrets.GITHUB_TOKEN }} | sed 's/./& /g'
         run: blossom-ci
         env:
-         # OPERATION: 'AUTH'
+           OPERATION: 'AUTH'
            REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
         
